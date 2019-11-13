@@ -32,7 +32,7 @@
         <fastjson.version>1.2.47</fastjson.version>
         <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
         <!-- jackson @ResponseBoby 返回 json 数据的时候，装了 jockson 就不用再 xml 配置了, fastJson 需要配置 -->
-        <jackson.version>2.8.8</jackson.version>
+        <jackson.version>2.10.1</jackson.version>
     </properties>
 
     <dependencyManagement>
