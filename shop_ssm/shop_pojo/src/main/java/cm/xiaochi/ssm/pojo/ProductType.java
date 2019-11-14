@@ -7,6 +7,15 @@ public class ProductType implements Serializable {
     private String name;
     private Integer status;
 
+    public ProductType() {
+    }
+
+    public ProductType(Integer id, String name, Integer status) {
+        this.id = id;
+        this.name = name;
+        this.status = status;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +38,14 @@ public class ProductType implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductType{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

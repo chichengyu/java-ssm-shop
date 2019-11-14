@@ -41,4 +41,10 @@ public interface ProductTypeService {
      * @throws ProductTypeException
      */
     public void editStatus(int id) throws ProductTypeException;
+
+    /**
+     * 查询所有有效的商品分类
+     * @return
+     */
+    public List<ProductType> findEnable();
 }

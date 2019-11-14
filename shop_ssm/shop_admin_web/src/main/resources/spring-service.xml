@@ -4,7 +4,11 @@
        xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <import resource="spring-dao.xml"/>
+    <!-- 此处也可以不引入，引入后启动时，会报 警告 ：Bean already defined with the same name!
+    原因：
+      org.mybatis.spring.mapper.MapperScannerConfigurer是扫描仓储类的接口，集成 mybatis不是用接口方式实现的话，不需要配置
+    -->
+<!--    <import resource="spring-dao.xml"/>-->
 
     <context:component-scan base-package="cm.xiaochi.ssm.service"/>
 

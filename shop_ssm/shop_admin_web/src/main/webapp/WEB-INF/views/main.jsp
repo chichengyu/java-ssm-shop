@@ -18,13 +18,13 @@
             $("#frame-id").attr("src", "${pageContext.request.contextPath}/admin/productType/findAll");
         });
         $("#product-set").click(function() {
-            $("#frame-id").attr("src", "productManager.html");
+            $("#frame-id").attr("src", "${pageContext.request.contextPath}/admin/product/findAll");
         });
         $("#user-set").click(function() {
             $("#frame-id").attr("src", "customerManager.html");
         });
         $("#manager-set").click(function() {
-            $("#frame-id").attr("src", "sysuserManager.html");
+            $("#frame-id").attr("src", "${pageContext.request.contextPath}/admin/sysuser/findAll");
         });
     });
     </script>

@@ -27,6 +27,12 @@
         where name=#{name}
     </select>
 
+    <select id="findEnable" resultType="ProductType">
+        select <include refid="productTypeColumn"/>
+        from t_product_type
+        where status=#{status}
+    </select>
+
     <insert id="insert" >
         insert into t_product_type
         (name,status)

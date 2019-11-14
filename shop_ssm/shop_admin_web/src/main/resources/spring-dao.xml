@@ -16,12 +16,18 @@
         <property name="initialSize" value="${jdbc.initialSize}"/>
     </bean>
 
+    <!-- Mybatis's sqlSessionFactory config -->
+<!--    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"-->
+<!--          p:dataSource-ref="dataSource" p:configLocation="classpath:config/mybatis-config.xml" />-->
+
     <!-- 配置 sqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+        <!-- 加载 mybytais 配置文件 -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <!-- 指定映射文件路径 -->
         <property name="mapperLocations" value="classpath:cm/xiaochi/ssm/mapper/*.xml"/>
-        <!-- 包别名 -->
+        <!-- 包别名：因为 mybatis 的 xml 文件中需要写类的全限定名，较繁琐，以便在 mybatis 的 resultType 返回类型的时候用 -->
         <property name="typeAliasesPackage" value="cm.xiaochi.ssm.pojo"/>
         <!-- 分页插件 -->
         <property name="plugins">

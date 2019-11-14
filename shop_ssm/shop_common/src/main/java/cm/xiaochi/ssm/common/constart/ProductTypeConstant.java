@@ -1,6 +1,6 @@
 package cm.xiaochi.ssm.common.constart;
 
-public class ProductTypeConstant {
+public interface ProductTypeConstant {
     /**
      * 商品类型的状态，1表示启用
      */

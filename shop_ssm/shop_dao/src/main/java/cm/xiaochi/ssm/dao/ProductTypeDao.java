@@ -41,4 +41,10 @@ public interface ProductTypeDao {
      * 删除商品类型
      */
     public void deleteById(@Param("id")int id);
+
+    /**
+     * 查询所有有效的分类
+     * @return
+     */
+    public List<ProductType> findEnable(int status);
 }

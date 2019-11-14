@@ -1,6 +1,6 @@
 package cm.xiaochi.ssm.common.constart;
 
-public class ResponseStatusConstart {
+public interface ResponseStatusConstart {
     /**
      * 响应状态码，1表示成功
      */

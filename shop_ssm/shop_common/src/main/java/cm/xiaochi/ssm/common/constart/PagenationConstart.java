@@ -1,6 +1,6 @@
 package cm.xiaochi.ssm.common.constart;
 
-public class PagenationConstart {
+public interface PagenationConstart {
     /**
      * 当前面，默认为1
      */

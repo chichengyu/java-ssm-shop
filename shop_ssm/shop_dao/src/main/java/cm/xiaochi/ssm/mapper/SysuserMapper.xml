@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cm.xiaochi.ssm.dao.SysuserDao">
+
+    <resultMap id="sysuserMap" type="Sysuser">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="loginName" column="login_name"/>
+        <result property="password" column="password"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="isValid" column="is_valid"/>
+        <result property="createDate" column="create_date"/>
+        <association property="role" javaType="Role" column="role_id">
+            <id property="id" column="role_id"/>
+            <result property="roleName" column="role_name"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="sysuserMap2" type="Sysuser">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="loginName" column="login_name"/>
+        <result property="password" column="password"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="isValid" column="is_valid"/>
+        <result property="createDate" column="create_date"/>
+        <association property="role" javaType="Role" column="role_id">
+            <id property="id" column="role_id"/>
+        </association>
+    </resultMap>
+
+    <select id="selectAll" resultMap="sysuserMap">
+        select *,r.id role_id,r.role_name
+        from t_sysuser su
+        left join t_role r
+        on su.role_id=r.id
+    </select>
+
+    <!-- 登录查询 -->
+    <select id="selectByLoginNameAndPassword" resultMap="sysuserMap">
+        select *,r.id role_id,r.role_name
+        from t_sysuser su
+        left join t_role r on su.role_id=r.id
+        where su.login_name=#{loginName}
+        AND password=#{password}
+        AND is_valid=#{isValid}
+    </select>
+
+    <select id="selectById" resultMap="sysuserMap2">
+        select *
+        from t_sysuser
+        where id=#{id}
+    </select>
+
+    <!-- 多条件查询  默认 -1 代表没选-->
+    <select id="selectByParams" parameterType="cm.xiaochi.ssm.params.SysuserParams" resultMap="sysuserMap">
+        select *,r.id role_id,r.role_name
+        from t_sysuser su
+        left join t_role r on su.role_id=r.id
+        <where>
+            <if test="name!=null and name!=''">
+                and name like concat(concat("%",#{name}),"%")
+            </if>
+            <if test="loginName!=null and loginName!=''">
+                and login_name like concat(concat("%",#{loginName}),"%")
+            </if>
+            <if test="phone!=null and phone!=''">
+                and phone=#{phone}
+            </if>
+            <if test="roleId!=null and roleId!=-1">
+                and role_id=#{roleId}
+            </if>
+            <if test="isValid!=null and isValid!=-1">
+                and is_valid=#{isValid}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="Sysuser">
+        insert into t_sysuser
+        values (null,#{name},#{loginName},#{password},#{phone},#{email},#{isValid},#{createDate},#{role.id})
+    </insert>
+
+    <update id="update" parameterType="Sysuser">
+        update t_sysuser
+        set name=#{name},password=#{password},phone=#{phone},email=#{email},is_valid=#{isValid},create_date=#{createDate},role_id=#{role.id}
+        where id=#{id}
+    </update>
+
+    <update id="updateStatus">
+        update t_sysuser
+        set is_valid=#{isValid}
+        where id=#{id}
+    </update>
+</mapper>

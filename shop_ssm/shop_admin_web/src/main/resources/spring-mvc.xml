@@ -6,6 +6,10 @@
 
     <!-- 扫描controller的注解 -->
     <context:component-scan base-package="cm.xiaochi.ssm.controller"/>
+
+    <!-- 将Springmvc不能处理的请求交给tomcat 这东西在该项目中是为了将spring无法处理的.js 图片文件等交给tomcat处理，也可以自己设置强制让spring处理-->
+    <mvc:default-servlet-handler/>
+
     <!-- mvc 注解驱动 -->
     <mvc:annotation-driven>
         <!-- 配置返回 json 格式数据
@@ -31,6 +35,19 @@
     <mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/"/>
     <mvc:resources mapping="/iconfont/**" location="/WEB-INF/iconfont/"/>
     <mvc:resources mapping="/layer/**" location="/WEB-INF/layer/"/>
+    <mvc:resources mapping="/upload/**" location="/WEB-INF/upload/"/>
 
     <mvc:view-controller path="/login" view-name="login"/>
+
+    <!-- 配置文件上传
+         SpringMVC上传文件时，需要配置MultipartResolver处理器
+         **重点：
+            此处的 id="multipartResolver" 必须写上，否则接收不到参数
+     -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8" />
+        <!-- 配置文件上传大小 10M -->
+        <property name="maxUploadSize" value="10000000"/>
+        <property name="maxInMemorySize" value="40960" />
+    </bean>
 </beans>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 基础设置 -->
+    <settings>
+        <!-- changes from the defaults，全局启用或禁用延迟加载。当禁用时，所有关联对象都会即时加载。 -->
+        <setting name="lazyLoadingEnabled" value="false" />
+        <!-- 是否打印sql执行日志,打包要注释 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <!-- 别名定义 -->
+    <typeAliases>
+        <typeAlias alias="string" type="java.lang.String" />
+    </typeAliases>
+
+    <!-- 自定义类型转换器 -->
+    <!-- <typeHandlers>
+        <typeHandler javaType="Boolean" jdbcType="CHAR" handler="com.sfpay.product.dao.BooleanTypeHandler" />
+    </typeHandlers> -->
+
+    <!-- SQL映射文件 -->
+<!--    <mappers>-->
+<!--        <mapper resource="mapper/AccountMapper.xml"/>-->
+<!--        <mapper resource="mapper/AccountWaterMapper.xml"/>-->
+<!--        <mapper resource="mapper/ActivityJoinMapper.xml"/>-->
+<!--        <mapper resource="mapper/ActivityMapper.xml"/>-->
+<!--        <mapper resource="mapper/AdminGroupMapper.xml"/>-->
+<!--        <mapper resource="mapper/AdminMapper.xml"/>-->
+<!--        <mapper resource="mapper/AttentionMapper.xml"/>-->
+<!--        <mapper resource="mapper/AuthorizeMapper.xml"/>-->
+<!--        <mapper resource="mapper/DiggMapper.xml"/>-->
+<!--        <mapper resource="mapper/DynamicMapper.xml"/>-->
+<!--        <mapper resource="mapper/InvitationMapper.xml"/>-->
+<!--        <mapper resource="mapper/MemberMapper.xml"/>-->
+<!--        <mapper resource="mapper/MenuMapper.xml"/>-->
+<!--        <mapper resource="mapper/MessageMapper.xml"/>-->
+<!--        <mapper resource="mapper/OrderMapper.xml"/>-->
+<!--        <mapper resource="mapper/ReportMapper.xml"/>-->
+<!--        <mapper resource="mapper/ReviewMapper.xml"/>-->
+<!--        <mapper resource="mapper/WithdrawApplyMapper.xml"/>-->
+<!--        <mapper resource="mapper/MessageGroupMapper.xml"/>-->
+<!--        <mapper resource="mapper/WxPayResultMapper.xml"/>-->
+<!--        <mapper resource="mapper/SmsTemplateMapper.xml"/>-->
+<!--        <mapper resource="mapper/SmsSendboxMapper.xml"/>-->
+<!--        <mapper resource="mapper/ZhifubaoMapper.xml"/>-->
+<!--    </mappers>-->
+
+</configuration>

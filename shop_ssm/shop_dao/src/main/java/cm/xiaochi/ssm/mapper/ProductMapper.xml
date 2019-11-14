@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cm.xiaochi.ssm.dao.ProductDao">
+
+    <resultMap id="productMap" type="Product">
+        <id property="id" column="id"/>
+        <result property="name" column="name" />
+        <result property="price" column="price"/>
+        <result property="info" column="info"/>
+        <result property="image" column="image"/>
+        <association property="productType" javaType="ProductType" column="product_type_id">
+            <id property="id" column="type_id"/>
+            <result property="name" column="type_name"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="productMap2" type="Product">
+        <id property="id" column="id"/>
+        <result property="name" column="name" />
+        <result property="price" column="price"/>
+        <result property="info" column="info"/>
+        <result property="image" column="image"/>
+        <association property="productType" javaType="ProductType" column="product_type_id">
+            <id property="id" column="product_type_id"/>
+        </association>
+    </resultMap>
+    
+    <sql id="productColumn">
+        id,
+        name,
+        price,
+        info,
+        image,
+        product_type_id
+    </sql>
+
+    <select id="checkName" resultType="Product">
+        select <include refid="productColumn"/>
+        from t_product
+        where name=#{name}
+    </select>
+
+    <insert id="insert" parameterType="Product">
+        insert into t_product
+            (name,price,info,image,product_type_id)
+        values
+            (#{name},#{price},#{info},#{image},#{productType.id})
+    </insert>
+
+    <select id="selectAll" resultMap="productMap">
+        select *,pt.id type_id,pt.name type_name
+        from t_product
+        as p
+        inner join t_product_type
+        as pt
+        where p.product_type_id=pt.id
+    </select>
+
+    <select id="selectById" resultMap="productMap2">
+        select <include refid="productColumn"/>
+        from t_product
+        where id=#{id}
+    </select>
+
+    <update id="update" parameterType="product">
+        update t_product
+        set name=#{name},
+            price=#{price},
+            info=#{info},
+            image=#{image},
+            product_type_id=#{productType.id}
+        where id=#{id}
+    </update>
+
+    <delete id="delete" >
+        delete from t_product
+        where id=#{id}
+    </delete>
+</mapper>
