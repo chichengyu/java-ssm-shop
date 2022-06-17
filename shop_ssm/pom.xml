@@ -29,7 +29,7 @@
         <druid.version>1.1.6</druid.version>
         <pagehelper.version>5.1.2</pagehelper.version>
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
-        <fastjson.version>1.2.47</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <!-- jackson @ResponseBoby 返回 json 数据的时候，装了 jockson 就不用再 xml 配置了, fastJson 需要配置 -->
